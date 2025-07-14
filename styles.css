@@ -7,7 +7,7 @@ body {
 
 .titulo {
   text-align: center;
-  color: #5A3E2B;
+  color: #5A3E2B; /* Marrón oscuro */
   margin-bottom: 30px;
 }
 
@@ -24,7 +24,7 @@ body {
 }
 
 .anio h2 {
-  background-color: #5A3E2B;
+  background-color: #5A3E2B; /* Marrón oscuro */
   color: white;
   padding: 10px;
   text-align: center;
@@ -32,7 +32,7 @@ body {
 }
 
 .materia {
-  background-color: #A87C5F;
+  background-color: #A87C5F; /* Marrón claro */
   color: white;
   padding: 10px;
   margin: 5px 0;
@@ -44,7 +44,7 @@ body {
 }
 
 .materia.aprobada {
-  background-color: #D8C0A3;
+  background-color: #D8C0A3; /* Beige claro */
   color: #333;
 }
 

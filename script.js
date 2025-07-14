@@ -24,4 +24,75 @@ const materias = [
 
   { nombre: "Derecho Penal II", anio: 3, correlativas: ["Derecho Penal I"] },
   { nombre: "Derecho Civil II (Obligaciones)", anio: 3, correlativas: ["Derecho Civil I (Parte General)"] },
-  { nombre: "Derecho Procesal Civil y Comercial", anio: 3, correlati
+  { nombre: "Derecho Procesal Civil y Comercial", anio: 3, correlativas: ["Derecho Civil I (Parte General)"] },
+  { nombre: "Derecho Administrativo", anio: 3, correlativas: ["Derecho Constitucional"] },
+  { nombre: "Derecho de Familia y Sucesiones", anio: 3, correlativas: ["Derecho Civil I (Parte General)"] },
+
+  { nombre: "Derecho Civil III (Contratos)", anio: 4, correlativas: ["Derecho Civil II (Obligaciones)"] },
+  { nombre: "Derecho del Trabajo y de la Seguridad Social", anio: 4, correlativas: ["Derecho Constitucional"] },
+  { nombre: "Derecho Tributario", anio: 4, correlativas: ["Derecho Administrativo"] },
+  { nombre: "Filosofía del Derecho", anio: 4, correlativas: ["Introducción al Pensamiento Jurídico"] },
+  { nombre: "Derecho Civil IV (Reales)", anio: 4, correlativas: ["Derecho Civil II (Obligaciones)"] },
+  { nombre: "Derecho Internacional Privado", anio: 4, correlativas: ["Derecho Civil II (Obligaciones)"] },
+
+  { nombre: "Práctica Profesional Supervisada", anio: 5, correlativas: [
+    "Derecho Procesal Civil y Comercial",
+    "Derecho Procesal Penal",
+    "Derecho Civil III (Contratos)",
+    "Derecho del Trabajo y de la Seguridad Social"
+  ] },
+  { nombre: "Derecho Civil V (Responsabilidad Civil)", anio: 5, correlativas: ["Derecho Civil II (Obligaciones)"] },
+  { nombre: "Derecho Comercial I", anio: 5, correlativas: ["Derecho Civil II (Obligaciones)"] },
+  { nombre: "Derecho Comercial II", anio: 5, correlativas: ["Derecho Comercial I"] },
+  { nombre: "Derecho Civil VI (Derecho del Consumidor y Defensa de la Competencia)", anio: 5, correlativas: ["Derecho Civil III (Contratos)"] },
+  { nombre: "Derecho Civil VII (Bioética y Derecho Privado)", anio: 5, correlativas: ["Derecho Civil II (Obligaciones)"] },
+
+  { nombre: "Taller de Tesina", anio: 6, correlativas: ["Filosofía del Derecho"] },
+  { nombre: "Optativa I", anio: 6, correlativas: [] },
+  { nombre: "Optativa II", anio: 6, correlativas: [] },
+  { nombre: "Optativa III", anio: 6, correlativas: [] },
+  { nombre: "Tesina", anio: 6, correlativas: ["Taller de Tesina"] }
+];
+
+const malla = document.getElementById("malla");
+
+function cargarMaterias() {
+  const estado = JSON.parse(localStorage.getItem("estadoMaterias") || "{}");
+  const porAnio = {};
+  materias.forEach(m => {
+    if (!porAnio[m.anio]) porAnio[m.anio] = [];
+    porAnio[m.anio].push(m);
+  });
+
+  for (const anio of Object.keys(porAnio).sort((a, b) => a - b)) {
+    const col = document.createElement("div");
+    col.className = "anio";
+    col.innerHTML = `<h2>${niveles[anio]}</h2>`;
+
+    porAnio[anio].forEach(materia => {
+      const div = document.createElement("div");
+      div.className = "materia";
+      div.textContent = materia.nombre;
+
+      const aprobada = estado[materia.nombre];
+      if (aprobada) {
+        div.classList.add("aprobada");
+      } else if (!materia.correlativas.every(c => estado[c])) {
+        div.classList.add("bloqueada");
+      }
+
+      div.addEventListener("click", () => {
+        div.classList.toggle("aprobada");
+        estado[materia.nombre] = div.classList.contains("aprobada");
+        localStorage.setItem("estadoMaterias", JSON.stringify(estado));
+        location.reload();
+      });
+
+      col.appendChild(div);
+    });
+
+    malla.appendChild(col);
+  }
+}
+
+cargarMaterias();

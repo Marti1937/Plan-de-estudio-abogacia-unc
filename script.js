@@ -16,9 +16,9 @@ const materias = [
   { nombre: "Constitucional", anio: 1, correlativas: ["Introducción al Derecho"] },
   { nombre: "Privado I", anio: 1, correlativas: ["Introducción al Derecho", "Ieca"] },
   { nombre: "Penal I", anio: 1, correlativas: ["Introducción al Derecho", "Ieca"] },
-  { nombre: "Privado II", anio: 1, correlativas: ["Privado I", "Ieca"] },
 
-  // 2º Año
+  // 2º Año (incluye Privado II corregido)
+  { nombre: "Privado II", anio: 2, correlativas: ["Privado I", "Ieca"] },
   { nombre: "Teoría General del Proceso", anio: 2, correlativas: ["Problemas del Conocimiento", "Constitucional"] },
   { nombre: "Penal II", anio: 2, correlativas: ["Penal I", "Privado I"] },
   { nombre: "Privado III", anio: 2, correlativas: ["Privado II"] },

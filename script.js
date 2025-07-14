@@ -8,50 +8,60 @@ const niveles = {
 };
 
 const materias = [
-  { nombre: "Introducción al Conocimiento Científico", anio: 1, correlativas: [] },
-  { nombre: "Introducción al Pensamiento Jurídico", anio: 1, correlativas: [] },
-  { nombre: "Derecho Romano", anio: 1, correlativas: [] },
-  { nombre: "Teoría del Estado", anio: 1, correlativas: [] },
-  { nombre: "Sociología Jurídica", anio: 1, correlativas: [] },
-  { nombre: "Derechos Humanos y Garantías", anio: 1, correlativas: [] },
+  // 1º Año
+  { nombre: "Ieca", anio: 1, correlativas: [] },
+  { nombre: "Romano", anio: 1, correlativas: ["Ieca"] },
+  { nombre: "Problemas del Conocimiento", anio: 1, correlativas: ["Ieca"] },
+  { nombre: "Introducción al Derecho", anio: 1, correlativas: ["Ieca"] },
+  { nombre: "Constitucional", anio: 1, correlativas: ["Introducción al Derecho"] },
+  { nombre: "Privado I", anio: 1, correlativas: ["Introducción al Derecho", "Ieca"] },
+  { nombre: "Penal I", anio: 1, correlativas: ["Introducción al Derecho", "Ieca"] },
+  { nombre: "Privado II", anio: 1, correlativas: ["Privado I", "Ieca"] },
 
-  { nombre: "Derecho Constitucional", anio: 2, correlativas: ["Teoría del Estado"] },
-  { nombre: "Derecho Político", anio: 2, correlativas: ["Teoría del Estado"] },
-  { nombre: "Derecho Penal I", anio: 2, correlativas: ["Derecho Romano"] },
-  { nombre: "Derecho Civil I (Parte General)", anio: 2, correlativas: ["Derecho Romano"] },
-  { nombre: "Derecho Internacional Público", anio: 2, correlativas: ["Derechos Humanos y Garantías"] },
-  { nombre: "Derecho Procesal Penal", anio: 2, correlativas: ["Derecho Penal I"] },
+  // 2º Año
+  { nombre: "Teoría General del Proceso", anio: 2, correlativas: ["Problemas del Conocimiento", "Constitucional"] },
+  { nombre: "Penal II", anio: 2, correlativas: ["Penal I", "Privado I"] },
+  { nombre: "Privado III", anio: 2, correlativas: ["Privado II"] },
+  { nombre: "Público Provincial", anio: 2, correlativas: ["Constitucional", "Privado I"] },
+  { nombre: "Procesal Penal", anio: 2, correlativas: ["Teoría General del Proceso", "Penal II", "Constitucional", "Privado I", "Penal I"] },
+  { nombre: "Taller de Jurisprudencia I", anio: 2, correlativas: ["Privado II", "Penal I"] },
 
-  { nombre: "Derecho Penal II", anio: 3, correlativas: ["Derecho Penal I"] },
-  { nombre: "Derecho Civil II (Obligaciones)", anio: 3, correlativas: ["Derecho Civil I (Parte General)"] },
-  { nombre: "Derecho Procesal Civil y Comercial", anio: 3, correlativas: ["Derecho Civil I (Parte General)"] },
-  { nombre: "Derecho Administrativo", anio: 3, correlativas: ["Derecho Constitucional"] },
-  { nombre: "Derecho de Familia y Sucesiones", anio: 3, correlativas: ["Derecho Civil I (Parte General)"] },
+  // 3º Año
+  { nombre: "Privado IV", anio: 3, correlativas: ["Privado III"] },
+  { nombre: "Administrativo I", anio: 3, correlativas: ["Público Provincial"] },
+  { nombre: "Procesal Civil", anio: 3, correlativas: ["Teoría General del Proceso", "Privado I", "Privado II"] },
+  { nombre: "Privado V", anio: 3, correlativas: ["Privado IV"] },
+  { nombre: "Procesal Constitucional", anio: 3, correlativas: ["Teoría General del Proceso", "Público Provincial"] },
+  { nombre: "Procesal Administrativo II", anio: 3, correlativas: ["Constitucional", "Administrativo I"] },
+  { nombre: "Laboral", anio: 3, correlativas: ["Privado II", "Privado III"] },
+  { nombre: "Taller de Jurisprudencia II", anio: 3, correlativas: ["Taller de Jurisprudencia I", "Privado II"] },
 
-  { nombre: "Derecho Civil III (Contratos)", anio: 4, correlativas: ["Derecho Civil II (Obligaciones)"] },
-  { nombre: "Derecho del Trabajo y de la Seguridad Social", anio: 4, correlativas: ["Derecho Constitucional"] },
-  { nombre: "Derecho Tributario", anio: 4, correlativas: ["Derecho Administrativo"] },
-  { nombre: "Filosofía del Derecho", anio: 4, correlativas: ["Introducción al Pensamiento Jurídico"] },
-  { nombre: "Derecho Civil IV (Reales)", anio: 4, correlativas: ["Derecho Civil II (Obligaciones)"] },
-  { nombre: "Derecho Internacional Privado", anio: 4, correlativas: ["Derecho Civil II (Obligaciones)"] },
+  // 4º Año
+  { nombre: "Privado VI", anio: 4, correlativas: ["Privado V"] },
+  { nombre: "Político", anio: 4, correlativas: ["Administrativo I", "Taller de Jurisprudencia I"] },
+  { nombre: "Sociología", anio: 4, correlativas: [] },
+  { nombre: "Práctica Profesional I", anio: 4, correlativas: ["Procesal Penal", "Procesal Civil", "Privado V", "Laboral"] },
+  { nombre: "Privado VII", anio: 4, correlativas: ["Privado VI"] },
+  { nombre: "Filosofía", anio: 4, correlativas: ["Problemas del Conocimiento"] },
+  { nombre: "Economía", anio: 4, correlativas: [] },
+  { nombre: "Privado VIII", anio: 4, correlativas: ["Privado VI"] },
+  { nombre: "Concursal", anio: 4, correlativas: ["Privado VII", "Privado VIII"] },
 
-  { nombre: "Práctica Profesional Supervisada", anio: 5, correlativas: [
-    "Derecho Procesal Civil y Comercial",
-    "Derecho Procesal Penal",
-    "Derecho Civil III (Contratos)",
-    "Derecho del Trabajo y de la Seguridad Social"
-  ] },
-  { nombre: "Derecho Civil V (Responsabilidad Civil)", anio: 5, correlativas: ["Derecho Civil II (Obligaciones)"] },
-  { nombre: "Derecho Comercial I", anio: 5, correlativas: ["Derecho Civil II (Obligaciones)"] },
-  { nombre: "Derecho Comercial II", anio: 5, correlativas: ["Derecho Comercial I"] },
-  { nombre: "Derecho Civil VI (Derecho del Consumidor y Defensa de la Competencia)", anio: 5, correlativas: ["Derecho Civil III (Contratos)"] },
-  { nombre: "Derecho Civil VII (Bioética y Derecho Privado)", anio: 5, correlativas: ["Derecho Civil II (Obligaciones)"] },
+  // 5º Año
+  { nombre: "Historia", anio: 5, correlativas: ["Romano"] },
+  { nombre: "Teoría del Conflicto", anio: 5, correlativas: ["Procesal Penal", "Procesal Constitucional", "Filosofía", "Concursal"] },
+  { nombre: "Optativa I", anio: 5, correlativas: [] },
+  { nombre: "Internacional Público", anio: 5, correlativas: ["Político"] },
+  { nombre: "Ética", anio: 5, correlativas: ["Concursal"] },
+  { nombre: "Optativa II", anio: 5, correlativas: [] },
+  { nombre: "Práctica Profesional II", anio: 5, correlativas: ["Práctica Profesional I"] },
+  { nombre: "Tributario", anio: 5, correlativas: ["Procesal Administrativo II", "Economía"] },
+  { nombre: "Optativa III", anio: 5, correlativas: [] },
 
-  { nombre: "Taller de Tesina", anio: 6, correlativas: ["Filosofía del Derecho"] },
-  { nombre: "Optativa I", anio: 6, correlativas: [] },
-  { nombre: "Optativa II", anio: 6, correlativas: [] },
-  { nombre: "Optativa III", anio: 6, correlativas: [] },
-  { nombre: "Tesina", anio: 6, correlativas: ["Taller de Tesina"] }
+  // 6º Año
+  { nombre: "Seminario de Naturales", anio: 6, correlativas: ["Administrativo I", "Procesal Administrativo II", "Procesal Penal"] },
+  { nombre: "Optativa IV", anio: 6, correlativas: [] },
+  { nombre: "Tesina", anio: 6, correlativas: ["Ética", "Concursal"] }
 ];
 
 const malla = document.getElementById("malla");

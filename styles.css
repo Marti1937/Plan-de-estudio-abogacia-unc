@@ -7,7 +7,7 @@ body {
 
 .titulo {
   text-align: center;
-  color: #5A3E2B; /* Marrón oscuro */
+  color: #5A3E2B;
   margin-bottom: 30px;
 }
 
@@ -23,3 +23,32 @@ body {
   min-width: 220px;
 }
 
+.anio h2 {
+  background-color: #5A3E2B;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.materia {
+  background-color: #A87C5F;
+  color: white;
+  padding: 10px;
+  margin: 5px 0;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  user-select: none;
+}
+
+.materia.aprobada {
+  background-color: #D8C0A3;
+  color: #333;
+}
+
+.materia.bloqueada {
+  opacity: 0.4;
+  pointer-events: none;
+}
